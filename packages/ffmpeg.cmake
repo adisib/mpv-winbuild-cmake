@@ -2,7 +2,6 @@ ExternalProject_Add(ffmpeg
     DEPENDS
         amf-headers
         avisynth-headers
-        nvcodec-headers
         bzip2
         gmp
         lame
@@ -46,11 +45,19 @@ ExternalProject_Add(ffmpeg
         --cross-prefix=${TARGET_ARCH}-
         --prefix=${MINGW_INSTALL_PREFIX}
         --arch=${TARGET_CPU}
+	--cpu=znver3 #
         --target-os=mingw32
         --target-exec=wine
         --pkg-config-flags=--static
         --enable-cross-compile
+	--disable-debug #
+	--disable-doc #
+	--disable-appkit #
         --enable-runtime-cpudetect
+	--disable-encoders #
+	--disable-neon #
+	--disable-armv6t2 #
+	--disable-armv6 #
         --enable-gpl
         --enable-version3
         --enable-nonfree
@@ -91,16 +98,25 @@ ExternalProject_Add(ffmpeg
         --enable-libshaderc
         --enable-libzvbi
         --enable-libaribcaption
-        --enable-cuda
-        --enable-cuvid
-        --enable-nvdec
-        --enable-nvenc
+	#--enable-libmfx
+	--disable-libmfx #
+	#--enable-cuda
+	--disable-cuda #
+	#enable-cuvid
+	--disable-cuvid #
+	#--enable-nvdec
+	--disable-nvdec #
+	#--enable-nvenc
+	--disable-nvenc #
+	--disable-videotoolbox #
         --enable-amf
         --disable-doc
         --disable-vaapi
         --disable-vdpau
         --disable-videotoolbox
+        --disable-decoder=libaom_av1
         "--extra-libs='-lstdc++'" # needs by libjxl and shaderc
+	"--extra-cflags='-DJXL_STATIC_DEFINE -DMODPLUG_STATIC -DLIBSSH_STATIC'"
     BUILD_COMMAND ${MAKE}
     INSTALL_COMMAND ${MAKE} install
     LOG_DOWNLOAD 1 LOG_UPDATE 1 LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1

@@ -4,5 +4,7 @@ export PKG_CONFIG="pkgconf --static"
 export PKG_CONFIG_LIBDIR="@MINGW_INSTALL_PREFIX@/lib/pkgconfig"
 export RUSTUP_HOME="@RUSTUP_LOCATION@/.rustup"
 export CARGO_HOME="@RUSTUP_LOCATION@/.cargo"
+export CFLAGS="-O3 -D_FORTIFY_SOURCE=0 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -march=znver3 -DNDEBUG"
+export CXXFLAGS="-O3 -D_FORTIFY_SOURCE=0 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -march=znver3 -DNDEBUG"
 
 eval $*

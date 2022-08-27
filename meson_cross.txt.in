@@ -8,6 +8,10 @@ pkgconfig = '@CMAKE_INSTALL_PREFIX@/bin/@TARGET_ARCH@-pkgconf'
 dlltool = '@CMAKE_INSTALL_PREFIX@/bin/@TARGET_ARCH@-dlltool'
 # exe_wrapper = 'wine'
 
+[properties]
+c_args = ['-O3', '-fomit-frame-pointer', '-finline-functions-called-once', '-fmerge-constants', '-ftree-dce', '-ftree-dse', '-ftree-loop-vectorize', '-ftree-vectorize', '-fdce', '-fdse', '-march=znver3', '-DNDEBUG']
+cpp_args = ['-O3', '-fomit-frame-pointer', '-finline-functions-called-once', '-fmerge-constants', '-ftree-dce', '-ftree-dse', '-ftree-loop-vectorize', '-ftree-vectorize', '-fdce', '-fdse', '-march=znver3', '-DNDEBUG']
+
 [host_machine]
 system = 'windows'
 cpu_family = '@TARGET_CPU_FAMILY@'

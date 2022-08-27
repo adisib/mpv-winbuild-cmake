@@ -4,8 +4,8 @@ ExternalProject_Add(libass
         freetype2
         fribidi
         libiconv
-        fontconfig
         libunibreak
+	#fontconfig
     GIT_REPOSITORY https://github.com/libass/libass.git
     SOURCE_DIR ${SOURCE_LOCATION}
     GIT_CLONE_FLAGS "--filter=tree:0"
@@ -14,6 +14,7 @@ ExternalProject_Add(libass
         --host=${TARGET_ARCH}
         --prefix=${MINGW_INSTALL_PREFIX}
         --disable-shared
+	--disable-fontconfig
     BUILD_COMMAND ${MAKE}
     INSTALL_COMMAND ${MAKE} install
     LOG_DOWNLOAD 1 LOG_UPDATE 1 LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1

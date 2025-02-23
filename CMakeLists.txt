@@ -9,6 +9,15 @@ cmake_policy(SET CMP0114 NEW)
 if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
+cmake_policy(SET CMP0175 NEW)
+
+#Personal Customization
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -march=znver3 -DNDEBUG")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -march=znver3 -DNDEBUG")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -DNDEBUG")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -DNDEBUG")
+message(STATUS "CFLAGS: ${CMAKE_C_FLAGS}")
+message(STATUS "CXXFLAGS: ${CMAKE_CXX_FLAGS}")
 
 if(NOT CMAKE_GENERATOR STREQUAL "Ninja")
     message(WARNING "Generator “${CMAKE_GENERATOR}” is unsupported!\nTry Ninja if you encounter problems.")

@@ -49,7 +49,6 @@ list(APPEND ep
     libvpl
     amf-headers
     avisynth-headers
-    nvcodec-headers
     libmysofa
     aom
     xxhash

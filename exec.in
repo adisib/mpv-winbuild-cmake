@@ -10,4 +10,10 @@ export CCACHE_DIR="@MINGW_INSTALL_PREFIX@/ccache"
 export LLVM_PROFILE_FILE="/dev/null"
 # disable profraw output by default, ensure that only clang and lld can explicitly enable profraw output by wrapper
 
+#export CFLAGS="-O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -march=znver3 -DNDEBUG"
+#export CXXFLAGS="-O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -march=znver3 -DNDEBUG"
+export CFLAGS="-O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -DNDEBUG"
+export CXXFLAGS="-O3 -fomit-frame-pointer -finline-functions-called-once -fmerge-constants -ftree-dce -ftree-dse -ftree-loop-vectorize -ftree-vectorize -fdce -fdse -DNDEBUG"
+
+
 eval $*

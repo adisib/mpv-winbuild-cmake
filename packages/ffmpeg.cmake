@@ -2,7 +2,6 @@ ExternalProject_Add(ffmpeg
     DEPENDS
         amf-headers
         avisynth-headers
-        ${nvcodec_headers}
         bzip2
         lame
         lcms2
@@ -59,6 +58,16 @@ ExternalProject_Add(ffmpeg
         --pkg-config-flags=--static
         --enable-cross-compile
         --enable-runtime-cpudetect
+	#--cpu=znver3 #
+	--disable-debug #
+	--disable-doc #
+	--disable-appkit #
+	--disable-encoders #
+	--disable-neon #
+	--disable-armv6t2 #
+	--disable-armv6 #
+	--disable-librav1e #
+	--disable-libmfx #
         --enable-gpl
         --enable-version3
         --enable-postproc
@@ -104,7 +113,11 @@ ExternalProject_Add(ffmpeg
         --enable-libshaderc
         --enable-libzvbi
         --enable-libaribcaption
-        ${ffmpeg_cuda}
+	#${ffmpeg_cuda}
+	--disable-cuda #
+	--disable-cuvid #
+	--disable-nvdec #
+	--disable-nvenc #
         --enable-amf
         --enable-openal
         --enable-opengl
